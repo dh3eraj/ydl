@@ -42,7 +42,6 @@ class _UserListViewState extends State<UserListView> {
       appBar: AppBar(title: const Text("Users"), centerTitle: true),
       bottomNavigationBar: Container(
         height: 64,
-        margin: EdgeInsets.all(12),
         alignment: Alignment.center,
         decoration: BoxDecoration(
           color:
@@ -55,7 +54,6 @@ class _UserListViewState extends State<UserListView> {
                     ? Color(0xFF000000)
                     : Color(0xFFFFFFFF),
           ),
-          borderRadius: BorderRadius.circular(16),
         ),
         child: Text(
           appFlavor == 'development' ? 'YDL DEV' : 'YDL PROD',
