@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart' show appFlavor;
 import 'package:get/get.dart';
 import 'package:ydl_users/models/service/network_api_service.dart';
 import 'package:ydl_users/models/user_model.dart';
@@ -38,7 +39,32 @@ class _UserListViewState extends State<UserListView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Users")),
+      appBar: AppBar(title: const Text("Users"), centerTitle: true),
+      bottomNavigationBar: Container(
+        height: 64,
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color:
+              appFlavor == 'development'
+                  ? Color(0XFFFFFFFF)
+                  : Color(0xFF000000),
+          border: Border.all(
+            color:
+                appFlavor == 'development'
+                    ? Color(0xFF000000)
+                    : Color(0xFFFFFFFF),
+          ),
+        ),
+        child: Text(
+          appFlavor == 'development' ? 'YDL DEV' : 'YDL PROD',
+          style: TextStyle(
+            color:
+                appFlavor == 'development'
+                    ? Color(0xFF000000)
+                    : Color(0XFFFFFFFF),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           Padding(
@@ -107,6 +133,8 @@ class _UserListViewState extends State<UserListView> {
                       ],
                     ),
                   );
+                case null:
+                  return Container();
               }
             }),
           ),

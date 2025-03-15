@@ -8,8 +8,8 @@ class UserViewModel extends GetxController {
   final UserRepository _repository;
   UserViewModel(this._repository);
 // Users Status
-  late Rx<Status> _usersStatus;
-  Rx<Status> get usersStatus => _usersStatus;
+  late Rx<Status?> _usersStatus = null.obs;
+  Rx<Status?> get usersStatus => _usersStatus;
 
 // Users
   late List<UserModel> _users;
