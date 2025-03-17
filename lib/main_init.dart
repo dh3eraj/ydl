@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ydl_users/config/dependency_injection.dart';
 import 'package:ydl_users/config/routes.dart';
+import 'package:ydl_users/flavor/app_config.dart';
 
-void main() async {
+void mainInit() async {
   WidgetsFlutterBinding.ensureInitialized();
   await setupServiceLocator();
-  runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -13,9 +13,12 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
+    AppConfig? appConfig = AppConfig.of(context);
+
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      title: 'YDL',
+      title: appConfig!.appName ,
       routerConfig: Routes.routerConfig,
     );
   }
