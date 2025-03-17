@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show appFlavor;
 import 'package:get/get.dart';
+import 'package:ydl_users/flavor/app_config.dart';
 import 'package:ydl_users/models/service/network_api_service.dart';
 import 'package:ydl_users/models/user_model.dart';
 import 'package:ydl_users/viewModels/user_view_model.dart';
@@ -38,30 +38,25 @@ class _UserListViewState extends State<UserListView> {
 
   @override
   Widget build(BuildContext context) {
+    AppConfig? appConfig = AppConfig.of(context);
+
     return Scaffold(
       appBar: AppBar(title: const Text("Users"), centerTitle: true),
       bottomNavigationBar: Container(
         height: 64,
         alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color:
-              appFlavor == 'development'
-                  ? Color(0XFFFFFFFF)
-                  : Color(0xFF000000),
-          border: Border.all(
-            color:
-                appFlavor == 'development'
-                    ? Color(0xFF000000)
-                    : Color(0xFFFFFFFF),
-          ),
-        ),
+        decoration: BoxDecoration(color: appConfig!.backgroundColor),
         child: Text(
-          appFlavor == 'development' ? 'YDL DEV' : 'YDL PROD',
+          appConfig.appName,
           style: TextStyle(
-            color:
-                appFlavor == 'development'
-                    ? Color(0xFF000000)
-                    : Color(0XFFFFFFFF),
+            fontSize: 18,
+            letterSpacing: 1,
+            wordSpacing: 5,
+            fontWeight: FontWeight.w900,
+            foreground:
+                Paint()
+                  ..style = PaintingStyle.fill
+                  ..color = Colors.black,
           ),
         ),
       ),

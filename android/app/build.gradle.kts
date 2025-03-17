@@ -32,6 +32,7 @@ android {
         signingConfig = signingConfigs.getByName("debug")
 
       }
+
       getByName("release") {
             signingConfig = signingConfigs.getByName("debug")
       }
@@ -45,6 +46,14 @@ android {
                 name = "app_name",
                 value = "YDL DEV")            
             applicationIdSuffix = ".dev"
+        }
+        create("staging") {
+            dimension = "default"
+            resValue(
+                type = "string",
+                name = "app_name",
+                value = "YDL STAG")            
+            applicationIdSuffix = ".stag"
         }
         create("production") {
             dimension = "default"

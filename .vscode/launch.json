@@ -10,8 +10,17 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "debug",
-            "program": "lib/main.dart",
+            "program": "lib/flavor/main_development.dart",
             "args": ["--flavor", "development"],
+          },
+          {
+            "name": "YDL STAG",
+            "cwd": ".",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile",
+            "program": "lib/flavor/main_staging.dart",
+            "args": ["--flavor", "staging"],
           },
         {
             "name": "YDL PROD",
@@ -19,7 +28,7 @@
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/main.dart",
+            "program": "lib/flavor/main_release.dart",
             "args": ["--flavor", "production"],
           },
     ]
